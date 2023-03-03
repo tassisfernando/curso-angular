@@ -1,11 +1,26 @@
+<header>
+  <app-server *ngFor="let server of serversList"></app-server>
+</header>
+
+<label>Server name</label>
+<!-- <input class="form-control" type="text" (input)="onUpdateServerName($event)"> -->
+<input class="form-control" type="text" [(ngModel)]="serverName">
+
 <button class="btn btn-primary" [disabled]="!allowNewServer" 
     (click)="addNewServer()"> Add new server </button>
 
-<div *ngIf="id === 0">
+<div *ngIf="serversList.length === 0; else existsServer">
   <p>No servers created!</p>
 </div>
 
-<div *ngFor="let serverId of serversList">
-    <p [innerText]="serverId"> </p> - 
-    <app-server></app-server>
+<ng-template #existsServer>
+  <p> Lista de servers: </p>
+</ng-template>
+
+<div *ngFor="let name of serversList">
+    <p> {{name}} </p>
+</div>
+
+<div>
+  <app-user></app-user>
 </div>
