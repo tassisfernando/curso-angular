@@ -1,0 +1,11 @@
+<button class="btn btn-primary" [disabled]="!allowNewServer" 
+    (click)="addNewServer()"> Add new server </button>
+
+<div *ngIf="id === 0">
+  <p>No servers created!</p>
+</div>
+
+<div *ngFor="let serverId of serversList">
+    <p [innerText]="serverId"> </p> - 
+    <app-server></app-server>
+</div>
